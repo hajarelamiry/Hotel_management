@@ -1,13 +1,23 @@
-package com.project.HotelServer;
+package com.project.HotelServer.ServicesAuth;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.project.HotelServer.Repository.UserRepository;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-@SpringBootApplication
-public class HotelServerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HotelServerApplication.class, args);
+@Service
+public class UserDetailsImp implements UserDetailsService {
+	private final UserRepository repository;
+
+	public UserDetailsImp(UserRepository repository) {
+		this.repository = repository;
 	}
 
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		return repository.findFirstByEmail(username).orElseThrow(()->new UsernameNotFoundException("User not found"));
+
+	}
 }

@@ -50,7 +50,7 @@ public class JwtUtil {
     }
 
 
-    public String generateToken(User user){
+    public String generateToken(UserDetails user){
         String token= Jwts.builder().setSubject(user.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+24*60*60*1000))
