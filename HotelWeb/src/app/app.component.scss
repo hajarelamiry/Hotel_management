@@ -1,0 +1,72 @@
+.logo{
+    height: 40px;
+    margin: 16px;
+    background: rgba(255,255,255,0.1);
+}
+nz-Header{
+    background:#fff;
+    padding: 0;
+}
+nz-content{
+    margin: 0 16px;
+}
+
+nz-breadcrumb{
+    margin: 16px 0;
+}
+
+.inner-content{
+    padding: 24px;
+    background: #fff;
+    min-height: 360px;
+}
+
+nz-footer{
+    text-align: center;
+}
+
+.center-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    width: 100%;
+}
+.center-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    width: 100%;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column; /* Arrange les éléments verticalement */
+  align-items: center; /* Centre horizontalement */
+  justify-content: center; /* Centre verticalement */
+  height: 100vh; /* Prend toute la hauteur de la fenêtre */
+  width: calc(100% - 200px); /* Ajuste la largeur (enlève celle du `sider`) */
+  margin-left: 200px; /* Décale pour prendre en compte la largeur du `sider` */
+  text-align: center;
+  margin-left: 2pc;
+}
+
+.description {
+  font-size: 23px; /* Taille du texte */
+  color: #190832; /* Couleur du texte */
+  margin-bottom: 16px; /* Espacement entre le paragraphe et l'image */
+}
+.logos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left:2pc;
+    position: center;
+    justify-content: center;
+    height: 27vh;
+    width: 200px;
+    margin-top: 2px;
+}
