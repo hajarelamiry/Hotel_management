@@ -1,5 +1,6 @@
 package com.project.HotelServer.Configs;
 
+import com.project.HotelServer.Enums.UserRole;
 import com.project.HotelServer.Filter.JwtAuthenticationFilter;
 import com.project.HotelServer.ServicesAuth.Jwt.UserService;
 import com.project.HotelServer.ServicesAuth.UserDetailsImp;
@@ -18,6 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration {
@@ -34,16 +37,16 @@ public class WebSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(AbstractHttpConfigurer::disable)
+        http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(requests ->
                         requests.requestMatchers("/api/auth/**").permitAll()
+                                .requestMatchers("/api/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
+                                .requestMatchers("/api/customer/**").hasAnyAuthority(UserRole.CUSTOMER.name())
                                 .anyRequest().authenticated()
-                ).userDetailsService(userDetailsImp)
-                .sessionManagement(session->session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .build();
-
+                )
+                .sessionManagement(manager->manager.sessionCreationPolicy(STATELESS))
+                .authenticationProvider(authenticationProvider()).addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
+        return http.build();
     }
 
     @Bean

@@ -1,5 +1,6 @@
 package com.project.HotelServer.ServicesAuth;
 
+
 public class AuthenticationResponse {
     private String token;
 

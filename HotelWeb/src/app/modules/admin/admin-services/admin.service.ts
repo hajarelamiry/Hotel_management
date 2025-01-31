@@ -12,16 +12,22 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
-  postRoomsDetails(roomDto:any):Observable<any>{
-    return this.http.post(BASIC_URL+"api/admin/room",roomDto,
-    {headers:this.createAuthorizationHeader()});
+  postRoomsDetails(roomDto: any):Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` 
+  });
+
+    return this.http.post(BASIC_URL+"api/admin/room", roomDto, { headers });
   }
 
-  createAuthorizationHeader(){
-    let authHeaders:HttpHeaders=new HttpHeaders();
-    return authHeaders.set(
-      'Authorization',
-      'Bearer'+UserStorageService.getToken()
-    )
+  getRooms(pageNumber:number):Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` 
+    });
+      return this.http.get(BASIC_URL+`api/admin/rooms/${pageNumber}`,{ headers });
   }
 }
