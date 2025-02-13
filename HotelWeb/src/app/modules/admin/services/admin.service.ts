@@ -30,32 +30,4 @@ export class AdminService {
     });
       return this.http.get(BASIC_URL+`api/admin/rooms/${pageNumber}`,{ headers });
   }
-
-  getRoomById(id:number):Observable<any>{
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}` 
-    });
-    return this.http.get(BASIC_URL+`api/admin/room/${id}`,{headers});
-
-  }
-  UpdateRoomDetails(id:number,roomDto: any):Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}` 
-  });
-
-    return this.http.put(BASIC_URL+`api/admin/room/${id}`, roomDto, { headers });
-  }
-
-  DeleteRoom(id:number):Observable<any>{
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}` 
-  });
-    return this.http.delete(BASIC_URL+`api/admin/room/${id}`,{headers});
-  }
 }

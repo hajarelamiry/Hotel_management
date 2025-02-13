@@ -20,24 +20,29 @@
 
             <ng-template #avatarTemplate>
                 <nz-avatar
-                   nzSrc="">
+                   nzSrc="https://media.istockphoto.com/id/1467126728/photo/modern-scandinavian-and-japandi-style-bedroom-interior-design-with-bed-white-color-wooden.jpg?s=612x612&w=0&k=20&c=oa94MeFcLIs6l4hJQGztLbWe3BGOH9LtvLebnUXgUus=">
                 </nz-avatar>
             </ng-template>
 
             <ng-template #actionEdit>
-                <span nz-icon nzType="edit" [nzTheme]="'twotone'" class="icon">
+                <span nz-icon nzType="edit" style="color: blue;" nzTheme="outline" class="icon" routerLink="/admin/room/{{room.id}}/edit">
                 </span>
             </ng-template>
 
             <ng-template #actionDelete>
-                <span nz-icon nzType="delete" [nzTheme]="'twotone'" class="icon" [nzTwotoneColor]="'#FF0000'">
-
-                </span>
+                <i nz-icon nzType="delete" style="color: red;" nzTheme="outline" class="icon" [nzTwotoneColor]="'#FF0000'" (click)="showConfirm(room.id)" ></i>
             </ng-template>
 
         </div>
 
     </div>
+    
+    <div class="pagination">
+        <nz-pagination [nzPageIndex]="currentPage" [nzTotal]="total" [nzPageSize]="1"
+          (nzPageIndexChange)="pageIndexChange($event)">
 
+        </nz-pagination>
+
+    </div>
 
 </div>

@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerComponent } from './customer.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { DemoNgZorroAntdModule } from 'src/app/DemoNgZorroAntdModule';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { RoomsComponent } from './components/rooms/rooms.component';
   ],
   imports: [
     CommonModule,
-    CustomerRoutingModule
+    FormsModule,
+    CustomerRoutingModule,
+    DemoNgZorroAntdModule
   ]
 })
 export class CustomerModule { }

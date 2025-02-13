@@ -20,4 +20,13 @@ export class CustomerService {
       return this.http.get(BASIC_URL+`api/customer/room/${pageNumber}`,{ headers });
   }
 
+  BookRoom(bookingDto:any):Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` 
+    });
+      return this.http.post(BASIC_URL+`api/customer/book`,bookingDto,{ headers });
+  }
+
 }

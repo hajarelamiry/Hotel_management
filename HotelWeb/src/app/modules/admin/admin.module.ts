@@ -7,12 +7,14 @@ import { PostRoomComponent } from './components/post-room/post-room.component';
 import { DemoNgZorroAntdModule } from 'src/app/DemoNgZorroAntdModule';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { UpdateRoomComponent } from './components/update-room/update-room.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
     DashboardComponent,
-    PostRoomComponent
+    PostRoomComponent,
+    UpdateRoomComponent
   ],
   imports: [
     CommonModule,
